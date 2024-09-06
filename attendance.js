@@ -186,5 +186,5 @@ document.addEventListener('DOMContentLoaded', function() {
 // Function to handle logout
 function logout() {
     // Handle logout logic
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
