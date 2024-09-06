@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Attendance Tracker</h1>
+            <h2 id="welcomeMessage"></h2>
+            <button class="btn logout-btn" onclick="logout()">Logout</button>
+        </header>
+        <main>
+            <section class="form-section">
+                <h2>Add Subject</h2>
+                <form id="subjectForm">
+                    <div class="input-group">
+                        <label for="subjectName">Subject Name:</label>
+                        <input type="text" id="subjectName" placeholder="Enter subject name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="subjectType">Subject Type:</label>
+                        <select id="subjectType" required>
+                            <option value="theory">Theory</option>
+                            <option value="lab">Lab</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="totalHours">Total Hours:</label>
+                        <input type="number" id="totalHours" placeholder="Enter total hours" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="attendedHours">Attended Hours:</label>
+                        <input type="number" id="attendedHours" placeholder="Enter attended hours" required>
+                    </div>
+                    <button type="button" class="btn" onclick="addSubject()">Add Subject</button>
+                </form>
+            </section>
+            <section class="table-section">
+                <h2>Subjects</h2>
+                <table id="subjectTable">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Type</th>
+                            <th>Total Hours</th>
+                            <th>Attended Hours</th>
+                            <th>Attendance %</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Subject rows will be inserted here -->
+                    </tbody>
+                </table>
+            </section>
+            <section class="add-class-section" id="addClassSection" style="display: none;">
+                <h2>Add Class to Subject</h2>
+                <form id="classForm">
+                    <div class="input-group">
+                        <label for="selectedSubject">Select Subject:</label>
+                        <select id="selectedSubject" required>
+                            <!-- Subject options will be populated here -->
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="classDate">Class Date:</label>
+                        <input type="date" id="classDate" required>
+                    </div>
+                    <button type="button" class="btn" onclick="addClass()">Add Class</button>
+                </form>
+            </section>
+            <section class="overall-attendance">
+                <h2>Overall Attendance</h2>
+                <div id="overallAttendance">
+                    <!-- Overall attendance percentage will be shown here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="attendance.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
+
