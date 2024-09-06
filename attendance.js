@@ -95,23 +95,34 @@ function changeAttendedHours(index, change) {
     const subject = subjects[index];
     let increment = subject.type === 'lab' ? 2 : 1.5; // Set increment based on subject type
     subject.attendedHours = Math.max(0, subject.attendedHours + (increment * change)); // Prevent negative attended hours
+    
+    if (subject.attendedHours > subject.totalHours) {
+        alert('Not valid: Attended hours cannot be more than total hours.');
+        subject.attendedHours -= increment * change; // Revert the change
+        return;
+    }
+    
     subject.attendancePercentage = (subject.attendedHours / subject.totalHours) * 100;
     localStorage.setItem('subjects', JSON.stringify(subjects));
     updateTable();
 }
-
 // Function to change the total hours (increment or decrement)
 // Function to change the total hours (increment or decrement)
 function changeTotalHours(index, change) {
     const subject = subjects[index];
     let increment = subject.type === 'lab' ? 2 : 1.5; // Set increment based on subject type
     subject.totalHours = Math.max(0, subject.totalHours + (increment * change)); // Prevent negative total hours
+    
+    if (subject.attendedHours > subject.totalHours) {
+        alert('Not valid: Attended hours cannot be more than total hours.');
+        subject.totalHours -= increment * change; // Revert the change
+        return;
+    }
+    
     subject.attendancePercentage = (subject.attendedHours / subject.totalHours) * 100;
     localStorage.setItem('subjects', JSON.stringify(subjects));
     updateTable();
 }
-
-
 // Function to add a class to a subject
 // Function to add a class to a subject
 function addClass() {
